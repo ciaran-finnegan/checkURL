@@ -1,4 +1,4 @@
-# checkUrlStatus
+# checkUrl
 
 Author:  Ciaran Finnegan
 Version: 0.0.1

@@ -1,0 +1,23 @@
+{
+  "name": "checkURL",
+  "version": "0.0.1",
+  "description": "Node.js Lambda function that tests the availability of a web URL.",
+  "main": "urlChecker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slartibastfast/checkURL.git"
+  },
+  "author": "Ciaran Finnegan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slartibastfast/checkURL/issues"
+  },
+  "homepage": "https://github.com/slartibastfast/checkURL#readme",
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "request": "^2.88.0"
+  }
+}
