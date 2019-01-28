@@ -1,11 +1,13 @@
 # checkUrlStatus
 
-Author:  cfinnegan@dxc.com
+Author:  Ciaran Finnegan
 Version: 0.0.1
 
 ## description
-Node.js Lambda function that tests the availability of a web URL. Targets are specified in targetsettings.json file e.g.
+Node.js Lambda function that tests the availability of a web URL. Targets are specified in a json object passed to the event handler, urlChecker.checkUrl
 
+In AWS Lambda console set handler to urlChecker.checkUrl and configure a Cloudwatch event trigger 
+to supply a json object specifying the URLs to be checked on a schedule e.g. 
 {
   "My google test URL": "http://google.com",
   "My glimps test URL": "http://glimps.in",
@@ -14,6 +16,9 @@ Node.js Lambda function that tests the availability of a web URL. Targets are sp
 
 * Pass if a 2xx code is returned by a url (http or https).
 * Fail on any other error (e.g. URL not found or other http error code)*/
+
+You will aslo need to configure a role with required access to write to cloudwatch, see this URL <https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html>
+If you wish to test hosts inside a VPC there are further configuration steps, see this URL <https://docs.aws.amazon.com/lambda/latest/dg/vpc.html>
 
 ### Sample Error Codes
 
