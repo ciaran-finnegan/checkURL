@@ -74,4 +74,5 @@ Update to pass configuration parameters for each URL e.g.
 * * Configure Dashboard
 * * * to be completed
 * * Configure Alarms
+* * * e.g. UrlNotResponding >= 1 for 2 datapoints within 10 minutes
 * * * to be completed
