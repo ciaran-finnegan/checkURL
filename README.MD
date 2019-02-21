@@ -37,3 +37,41 @@ Update to pass configuration parameters for each URL e.g.
     "followRedirect": true,
     "maxRedirects": 5
 }
+
+
+#### Installation
+
+* Create a new Security Group
+* * Name, urlChecker-out, Description urlChecker
+* * Inbound rules none
+* * Outbound rules, Protocol: TCP Ports: 0 - 65535 Destination: 0.0.0.0/0, Protocol DNS: Port: 53 Destination 0.0.0.0/0 (adjust as required)
+* Create IAM Role
+* * Name, Lambda-urlChecker
+* Create a new lambda function called urlChecker
+* * Description 'Checks URLs and logs to Cloudwatch'
+* * Code entry type, zip file
+* * Runtime, Node.js 8.10
+* * Configure test events, checkURL
+, example below, replace with accessible test URL
+{
+  "proxy-reports": "http://10.180.64.254/squid-reports/",
+  "SOP": "http://oilssolapp01.sydapp.net:8000/sap/public/ping?sap-client=001"
+}
+
+* * Handler, urlChecker.checkURL
+* * Memory 128MB
+* * Timeout, 2 minutes (adjust as required)
+* * Execution Role, Lambda-urlChecker
+* * Network, choose applicable VPC
+* * Subnets, choose applicable subnets
+* * Security Groups,  (urlChecker) | urlChecker-out
+* * Concurrency, use unreserved amount
+* Create Cloudwatch Rule
+* * Fixed rate of 5 minutes
+* * Add Target, Lambda function, urlCheck
+* * Configure input, Constant (JSON text)
+ e.g. {   "kanyini": "http://kanyini.io",   "glimps": "http://glimps.in", "bedandbarns": "http://www.bedandbarns.com"}
+* * Configure Dashboard
+* * * to be completed
+* * Configure Alarms
+* * * to be completed
