@@ -25,9 +25,18 @@ const method = 'GET'; // request method (GET/POST)
 const followRedirect = true; // follow redirects, e.g. for http to https redirects
 const maxRedirects = 5; // maximum redirects to follow
 
-// get reference to cloudwatch 
-const cloudwatch = new AWS.CloudWatch();
+// configure proxy if required to connect send cloudwatch metrics and logs to monitoring.ap-southeast-2.amazonaws.com & logs.ap-southeast-2.amazonaws.com
 
+        let cloudwatchOptions = {
+            httpOptions: {
+                // proxy: "http://services.proxy.sydapp.net:8080",
+                // connectTimeout: 5000, // Sets the socket to timeout after failing to establish a connection with the server after connectTimeout milliseconds. This timeout has no effect once a socket connection has been established.
+                timeout: 30000 // Sets the socket to timeout after timeout milliseconds of inactivity on the socket. Defaults to two minutes (120000)
+            }
+        };
+
+// get reference to cloudwatch 
+const cloudwatch = new AWS.CloudWatch(cloudwatchOptions);
 
 exports.checkUrl = (event, context, callback) => {
 
