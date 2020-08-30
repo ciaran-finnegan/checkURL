@@ -18,6 +18,6 @@
   "homepage": "https://github.com/slartibastfast/checkURL#readme",
   "dependencies": {
     "aws-sdk": "^2.395.0",
-    "request": "^2.88.0"
+    "request": "^2.88.2"
   }
 }
